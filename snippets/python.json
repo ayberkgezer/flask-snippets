@@ -1,0 +1,224 @@
+{
+  "Flask hello world": {
+    "prefix": "flask_hw",
+    "body": [
+      "from flask import Flask",
+      "app = Flask(__name__)",
+      "",
+      "@app.route('/')",
+      "def hello():",
+      "    return 'Hello World!'",
+      "",
+      "if __name__ == '__main__':",
+      "    app.run(debug=True)"
+    ],
+    "description": "Flask Hello World template"
+  },
+  "Flask route": {
+    "prefix": "flask_route",
+    "body": [
+      "@app.route('/${1:route_name}')",
+      "def ${2:method_name}():",
+      "    pass$0"
+    ],
+    "description": "Basic Flask route decorator"
+  },
+  "Flask route with GET, POST": {
+    "prefix": "flask_routegp",
+    "body": [
+      "@app.route('/${1:route_name}', methods=['GET', 'POST'])",
+      "def ${2:method_name}():",
+      "    pass$0"
+    ],
+    "description": "Route with GET and POST methods"
+  },
+  "Flask route POST only": {
+    "prefix": "flask_routep",
+    "body": [
+      "@app.route('/${1:route_name}', methods=['POST'])",
+      "def ${2:method_name}():",
+      "    pass$0"
+    ],
+    "description": "Route with POST method only"
+  },
+  "Flask expresion": {
+    "prefix": "flask_exp",
+    "body": "{{ ${1:foo.bar} }}$0",
+    "description": "Jinja expression"
+  },
+  "Flask filter": {
+    "prefix": "flask_filter",
+    "body": "{{ ${1:foo.bar}|${2:filter} }}$0",
+    "description": "Jinja filter expression"
+  },
+  "Flask comment": {
+    "prefix": "flask_comment",
+    "body": "{# \n\t${1:comment} \n#}$0",
+    "description": "Jinja comment block"
+  },
+  "Flask block": {
+    "prefix": "flask_block",
+    "body": "{% ${1:block} ${2:foo} %}$3{% end${1:block} %}\n$0",
+    "description": "Jinja block statement"
+  },
+  "Flask extends": {
+    "prefix": "flask_extends",
+    "body": "{% extends ${1:layout_template} %}\n\n$0",
+    "description": "Template inheritance"
+  },
+  "Flask self": {
+    "prefix": "flask_self",
+    "body": "{{ self.${1:block_name}() }}$0",
+    "description": "Reference to self block"
+  },
+  "Flask super": {
+    "prefix": "flask_super",
+    "body": "{{ self.super() }}$0",
+    "description": "Call to parent block"
+  },
+  "Flask for": {
+    "prefix": "flask_for",
+    "body": "{% for ${1:element} in ${2:collection} %}\n\t\t$3{{ ${1:element}|e }}$4\n{% endfor %}\n$0",
+    "description": "Jinja for loop"
+  },
+  "Flask if": {
+    "prefix": "flask_if",
+    "body": "{% if ${1:expression} %}\n\t\t${2:blockofcode}\n{% endif %}\n$0",
+    "description": "Jinja if statement"
+  },
+  "Flask ife": {
+    "prefix": "flask_ife",
+    "body": "{% if ${1:expression} %}\n\t\t${2:blockofcode}\n{% else %}\n\t\t${3:blockofcode}\n{% endif %}\n$0",
+    "description": "Jinja if-else statement"
+  },
+  "Flask elif": {
+    "prefix": "flask_elif",
+    "body": "{% if ${1:expression} %}\n\t\t${2:blockofcode}\n{% elif ${3:expression2} %}\n\t\t${4:blockofcode}\n{% else %}\n\t\t${5:blockofcode}\n{% endif %}\n$0",
+    "description": "Jinja if-elif-else statement"
+  },
+  "Flask macro": {
+    "prefix": "flask_macro",
+    "body": "{% macro ${1:expression} -%}\n\t\t${2:blockofcode}\n{%- endmacro %}$0",
+    "description": "Jinja macro definition"
+  },
+  "Flask filter block": {
+    "prefix": "flask_fb",
+    "body": "{% filter ${1:foo} %}\n\t\t${2:blockofcode}\n{% endfilter %}$0",
+    "description": "Jinja filter block"
+  },
+  "Flask set": {
+    "prefix": "flask_set",
+    "body": "{% set ${1:expression} %}$0",
+    "description": "Jinja set statement"
+  },
+  "Flask include": {
+    "prefix": "flask_include",
+    "body": "{% include \"${1:template}\" %}$0",
+    "description": "Include template"
+  },
+  "Flask import": {
+    "prefix": "flask_import",
+    "body": "{% import \"${1:template}\" as ${2:alias} %}\n$0",
+    "description": "Import template as alias"
+  },
+  "Flask from import": {
+    "prefix": "flask_from",
+    "body": "{% from '${1:template}.html' import ${2:object} %}\n$3",
+    "description": "Import object from template"
+  },
+  "Flask autoescape": {
+    "prefix": "flask_autoescape",
+    "body": "{% autoescape ${1:true} %}\n\t\t${2:blockofcode}\n{% endautoescape %}\n$0",
+    "description": "Autoescape block"
+  },
+  "Flask url": {
+    "prefix": "flask_url",
+    "body": "{{ url_for(\"${1:template}\") }}$0",
+    "description": "URL generator using url_for"
+  },
+  "Flask title": {
+    "prefix": "flask_title",
+    "body": "{% block title %}\n\t${1:name}\n{% endblock %}",
+    "description": "Define title block"
+  },
+  "Flask var": {
+    "prefix": "flask_var",
+    "body": "{{${1:Name var}}}",
+    "description": "Template variable"
+  },
+  "Flask content block": {
+    "prefix": "flask_content",
+    "body": "{% block content %}\n\t${1:Some content}\n{% endblock %}",
+    "description": "Define content block"
+  },
+  "ML docstring": {
+    "prefix": "flask_mldocstring",
+    "body": "\"\"\"${1:sumary_line}\n\nKeyword arguments:\n${2:argument} -- ${3:description}\nReturn: ${4:return_description}\n\"\"\"\n$0",
+    "description": "Multi-line docstring"
+  },
+  "SL docstring": {
+    "prefix": "flask_sldocstring",
+    "body": "\"\"\"${1:sumary_line}\"\"\"\n$0",
+    "description": "Single-line docstring"
+  },
+  "Flask App": {
+    "prefix": "flask_app",
+    "body": "from flask import Flask, render_template\napp = Flask(__name__)\n\n\n@app.route('${1:/}')\ndef ${2:index}():\n    return render_template('${3:index}.html')\n\nif __name__ == '__main__':\n    app.run(host='${4:127.0.0.1}', port=${5:8000}, debug=${6:True})\n$0 $0",
+    "description": "Flask application with template rendering"
+  },
+  "Flask Control route": {
+    "prefix": "flask_control_route",
+    "body": "@app.route('${1:path}')\ndef ${2:func_name}(${3:foo}):\n    return render_template('${4:expression}')$0",
+    "description": "Route with template rendering"
+  },
+  "URL generator": {
+    "prefix": "flask_url",
+    "body": "url_for('${1:foo}'$2)$0",
+    "description": "URL generator using url_for"
+  },
+  "URL methods": {
+    "prefix": "flask_fmeth",
+    "body": "methods=['GET', 'POST']$0",
+    "description": "HTTP methods specification (GET, POST)"
+  },
+  "Render template": {
+    "prefix": "flask_rt",
+    "body": "render_template('${1:page}.html', ${2:foo}=${3:bar})$0",
+    "description": "Render template with variables"
+  },
+  "Test request": {
+    "prefix": "flask_treq",
+    "body": "with app.test_request_context('${1:path}', method='${2:POST}'):\n\t\tassert request.path == '${1:path}'\n\t\tassert.method == '${2:POST}'\n$0",
+    "description": "Test request context"
+  },
+  "Flask upload": {
+    "prefix": "flask_up",
+    "body": "@app.route('${1:/upload}', methods=['GET', 'POST'])\ndef ${2:upload_file}():\n    if request.method == 'POST':\n        ${3:f} = request.files['${4:the_file}']\n        ${3:f}.save('${6:/path/to/save/}${4:the_file}.${5:txt}')\n$0",
+    "description": "File upload handler"
+  },
+  "Secure upload": {
+    "prefix": "flask_sup",
+    "body": "from werkzeug.utils import secure_filename\n\n@app.route('${1:/upload}', methods=['GET', 'POST'])\ndef ${2:upload_file}():\n    if request.method == 'POST':\n        ${3:f} = request.files['${4:the_file}']\n        ${3:f}.save('${5:/path/to/save/}' + secure_filename(${3:f}.filename))$0",
+    "description": "Secure file upload handler"
+  },
+  "Read cookie": {
+    "prefix": "flask_rc",
+    "body": "${1:foo} = request.cookies.get$('${2:key}')\n$0",
+    "description": "Read cookie"
+  },
+  "Set cookie": {
+    "prefix": "flask_sc",
+    "body": "${1:foo} = make_response(${2:expression})\n${1:foo}.set_cookie('${3:key}', '${4:value}')\nreturn ${1:foo}\n$0",
+    "description": "Set cookie"
+  },
+  "Error handler": {
+    "prefix": "flask_eh",
+    "body": "@app.errorhandler(${1:404})\ndef ${2:bar}(error):\n    return render_template('${3:error.html}'), ${1:404}\n$0",
+    "description": "Error handler"
+  },
+  "Flask logging": {
+    "prefix": "flask_log",
+    "body": "app.logger.${1:debug}(\"${2:A message}\")\n$0",
+    "description": "Flask logging"
+  }
+}
